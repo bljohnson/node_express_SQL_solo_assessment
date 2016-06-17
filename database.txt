@@ -1,0 +1,13 @@
+Database Name: bethany_zoo
+Table Name: animal_inventory
+Table Columns: id, animal_type, quantity
+
+Commands used to create bethany_zoo database and animal_inventory table:
+
+CREATE DATABASE bethany_zoo;
+
+CREATE TABLE animal_inventory (
+	id SERIAL PRIMARY KEY NOT NULL,
+	animal_type VARCHAR(30) UNIQUE,
+	quantity INT
+);

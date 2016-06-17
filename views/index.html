@@ -9,15 +9,17 @@
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <h1>Bethany's Zoo</h1>
-
-    <p id="currentHeader">Current Zoo Residents:</p>
-
-    <div id="outputDiv"></div>
-
-    <input type="text" id="animal" placeholder="Enter animal type"></input>
-    <button type="button" id="add">Add Animal</button><br><br>
-
-    <button type="button" id="getZoo">See Updated Zoo</button>
+    <div class="jumbotron">Bethany's Zoo</div>
+    <div class="row">
+      <div class="col-md-6">
+        <p id="displayZoo">Current Zoo Residents</p>
+        <div id="outputDiv"></div>
+      </div>
+      <div class="col-md-6">
+        <input type="text" id="animal" placeholder="Enter animal type"></input>
+        <button type="button" id="add">Add Animal</button><br><br><br>
+        <button type="button" id="getZoo">See Updated Zoo</button>
+      </div>
+    </div>
   </body>
 </html>

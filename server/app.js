@@ -21,32 +21,32 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
   console.log('in base URL');
   console.log(getQuantity(1,100)); // works
-  res.sendFile( path.resolve( 'views/index.html' ) ); // gets this path
+  res.sendFile(path.resolve('views/index.html')); // gets this path
 });
 
 app.get('/getZoo', function (req, res){
   console.log('in getZoo URL');
-  // this wil hold our results
+  // create array to hold animal stock
     var stock = [];
     pg.connect(connectionString, function (err, client, done){
-      // get all animals and store in query variable
-      var currentZoo = client.query('SELECT animal_type, quantity FROM animal_inventory;');
+      // get all animals in zoo and store in stock var
+      var currentZoo = client.query('SELECT animal_type, quantity FROM animal_inventory;'); // get animal type and quantity from table in db
       console.log("current zoo: " + currentZoo);
-      // push each row in query into our results array
+      // push each row into stock array
       var rows = 0;
       currentZoo.on('row', function (row) {
         stock.push(row);
-      }); // end query push
+      }); // end stock push
       currentZoo.on('end', function (){
         return res.json(stock);
       });
-    }); // end connect
-  }); // end app.get
+    }); // end connect function
+  }); // end app.get for getZoo
 
 // post route (requires the urlencodedParser INJECTION between route and function)
 app.post('/postNewAnimal', urlencodedParser, function(req, res){
   console.log('in postNewAnimal URL:' + req.body.animalType);
   pg.connect(connectionString, function(err, client, done){
-    client.query('INSERT INTO animal_inventory (animal_type, quantity) VALUES ($1, $2)', [req.body.animalType, getQuantity(1,100)]);
-  }); // end connect
-}); // end app.post
+    client.query('INSERT INTO animal_inventory (animal_type, quantity) VALUES ($1, $2)', [req.body.animalType, getQuantity(1,100)]); // add new row in db table for animal being added by user
+  }); // end connect function
+}); // end app.post for postNewAnimal
