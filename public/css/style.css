@@ -1,0 +1,14 @@
+body {
+  text-align: center;
+  background-color: rgb(240,215,167);
+}
+
+#currentHeader {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#outputDiv {
+  font-size: 12px;
+  font-weight: normal;
+}
